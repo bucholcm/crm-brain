@@ -1,0 +1,5 @@
+.DS_Store
+*.plugin
+dist/
+# Never commit a real vault into this repo
+crm-brain-vault/

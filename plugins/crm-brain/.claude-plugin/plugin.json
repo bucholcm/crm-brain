@@ -1,0 +1,21 @@
+{
+  "name": "crm-brain",
+  "version": "0.1.0",
+  "description": "A deal memory next to Salesforce. Turns meeting transcripts into account knowledge, CRM follow ups and action items; briefs you before client meetings with what the CRM does not show; reviews pipeline data honestly. Built on the LLM Wiki pattern.",
+  "author": {
+    "name": "Maciej Bucholc"
+  },
+  "homepage": "https://github.com/bucholcm/crm-brain",
+  "repository": "https://github.com/bucholcm/crm-brain",
+  "license": "MIT",
+  "keywords": [
+    "salesforce",
+    "crm",
+    "fireflies",
+    "llm-wiki",
+    "sales",
+    "pipeline",
+    "account-planning",
+    "obsidian"
+  ]
+}

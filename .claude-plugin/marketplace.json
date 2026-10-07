@@ -1,0 +1,14 @@
+{
+  "name": "crm-brain",
+  "description": "CRM Brain: a deal memory for Salesforce, Fireflies and Claude users.",
+  "owner": {
+    "name": "Maciej Bucholc"
+  },
+  "plugins": [
+    {
+      "name": "crm-brain",
+      "source": "./plugins/crm-brain",
+      "description": "Meeting intake, account briefs, honest pipeline reviews and two way contact sync, kept in a markdown vault next to your CRM."
+    }
+  ]
+}
