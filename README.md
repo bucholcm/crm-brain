@@ -4,7 +4,7 @@
 
 A Claude plugin for people who sell with Salesforce and record calls with Fireflies. It keeps a plain markdown vault next to your CRM, fills it from meetings, and uses it to tell you what the CRM cannot: who really decides, what was promised on a call and never logged, which "empty" contact record is in fact the CFO.
 
-Built on Andrej Karpathy's [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) idea. Generalised from a private setup I have run every working day since May 2026. The story, with the mistakes, is in [JOURNEY.md](JOURNEY.md).
+Built on Andrej Karpathy's [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) idea. Generalised from a private setup I have run every working day since May 2026.
 
 ---
 

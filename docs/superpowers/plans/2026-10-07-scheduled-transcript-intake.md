@@ -20,7 +20,7 @@
 - Raw transcripts are never copied into the vault; questionable derived claims are marked `[unconfirmed]` and retain source evidence.
 - Salesforce may be read during intake but is never written by a scheduled run; every proposed write requires later explicit approval and a fresh read.
 - A transcript is marked processed only after all intended automatic vault writes succeed.
-- Existing user-authored content and unrelated working-tree changes, including the current `.gitignore` edit, must remain untouched.
+- Existing user-authored content and unrelated working-tree changes must remain untouched.
 
 ## Review Focus
 
@@ -562,7 +562,6 @@ git commit -m "feat: align vault with transcript sources"
 - Modify: `plugins/crm-brain/README.md:1-28`
 - Modify: `plugins/crm-brain/.claude-plugin/plugin.json:1-18`
 - Modify: `.claude-plugin/marketplace.json:1-13`
-- Modify: `JOURNEY.md:15-20,98-107`
 
 **Interfaces:**
 - Consumes: The implemented setup and intake behavior from Tasks 2-4.
@@ -579,7 +578,6 @@ import json
 class ProductCopyTest(unittest.TestCase):
     PRODUCT_FILES = (
         "README.md",
-        "JOURNEY.md",
         "plugins/crm-brain/README.md",
         "plugins/crm-brain/.claude-plugin/plugin.json",
         ".claude-plugin/marketplace.json",
@@ -630,11 +628,7 @@ Update Cowork and Claude Code steps so they instruct the user to configure the G
 
 Remove `fireflies` from `plugins/crm-brain/.claude-plugin/plugin.json`. Add `google-drive` and `automation`. Rewrite the marketplace description so it says CRM Brain is for Salesforce and MCP-accessible meeting transcripts, without naming a recorder vendor.
 
-- [ ] **Step 5: Align the journey's implementation claims**
-
-Change the May scheduled-run sentence to say it reads new transcripts from a configured source. Change the final lesson about proposals so it states that vault updates preserve evidence and mark uncertainty, while CRM writes remain proposals. Keep the personal narrative and quantitative history intact.
-
-- [ ] **Step 6: Run product-copy and full contract tests**
+- [ ] **Step 5: Run product-copy and full contract tests**
 
 Run: `python3 -m unittest tests.test_plugin_contract.ProductCopyTest -v`
 
@@ -644,10 +638,10 @@ Run: `python3 -m unittest discover -s tests -v`
 
 Expected: all contract tests pass.
 
-- [ ] **Step 7: Commit documentation and metadata**
+- [ ] **Step 6: Commit documentation and metadata**
 
 ```bash
-git add tests/test_plugin_contract.py README.md JOURNEY.md plugins/crm-brain/README.md plugins/crm-brain/.claude-plugin/plugin.json .claude-plugin/marketplace.json
+git add tests/test_plugin_contract.py README.md plugins/crm-brain/README.md plugins/crm-brain/.claude-plugin/plugin.json .claude-plugin/marketplace.json
 git commit -m "docs: describe MCP transcript intake"
 ```
 
@@ -722,7 +716,7 @@ Expected: no whitespace errors.
 
 Run: `git status --short`
 
-Expected: only the files named by this plan plus the pre-existing `.gitignore` modification appear; `.gitignore` remains unchanged by this work.
+Expected: only the files named by this plan appear.
 
 - [ ] **Step 5: Commit the test suite and rebuilt plugin**
 
