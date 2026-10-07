@@ -48,4 +48,5 @@ PY
 mkdir -p "$ROOT/dist"
 rm -f "$ROOT/dist/crm-brain.plugin"
 (cd "$PLUGIN" && zip -rq "$ROOT/dist/crm-brain.plugin" . -x "*.DS_Store")
+(cd "$ROOT" && zip -q "$ROOT/dist/crm-brain.plugin" LICENSE)
 echo "== built dist/crm-brain.plugin"
