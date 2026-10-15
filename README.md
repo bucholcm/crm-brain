@@ -1,7 +1,6 @@
 # crm-brain
 
 [![skills.sh](https://skills.sh/b/bucholcm/crm-brain)](https://skills.sh/bucholcm/crm-brain)
-[![M8ven Score](https://m8ven.ai/badge/mcp/bucholcm-crm-brain-3o7mfi?v=f97bc4802c14b7af8e465031bec21c09)](https://m8ven.ai/mcp/bucholcm-crm-brain-3o7mfi?s=readme)
 
 **A deal memory next to your CRM.** Salesforce keeps the fields. CRM Brain keeps what was actually said.
 

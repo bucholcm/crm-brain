@@ -2,7 +2,7 @@
 
 ## Goal
 
-Make the seven CRM Brain skills easy to install through the `skills` CLI and discoverable on skills.sh, while linking the repository to its existing M8ven trust listing. Keep the Claude plugin installation path intact and avoid maintaining duplicate copies of any skill.
+Make the seven CRM Brain skills easy to install through the `skills` CLI and discoverable on skills.sh. Keep the Claude plugin installation path intact and avoid maintaining duplicate copies of any skill.
 
 ## Distribution model
 
@@ -18,12 +18,9 @@ They can select one skill with the CLI's `--skill` option. The existing Claude p
 
 ## Repository presentation
 
-Add two badges near the top of the root README:
+Add the standard skills.sh repository badge near the top of the root README and link it to the CRM Brain page on skills.sh.
 
-- the standard skills.sh repository badge linked to the CRM Brain page on skills.sh;
-- the supplied M8ven score badge linked to the existing CRM Brain listing.
-
-The M8ven badge is trust-listing metadata only. Documentation must not describe CRM Brain as an MCP server or present the M8ven page as an installation method.
+Do not add an M8ven badge. M8ven primarily evaluates MCP servers, while CRM Brain is distributed as Agent Skills and a Claude plugin.
 
 Update the installation section so Agent Skills installation is a first-class option alongside Cowork and Claude Code. State the shared runtime requirements once: users still need a Salesforce connector and may optionally connect a transcript source.
 
@@ -55,4 +52,4 @@ The skills.sh directory is driven by CLI installation telemetry. After the chang
 - Duplicating skill sources at the repository root.
 - Moving the existing Claude plugin layout.
 - Changing skill behavior, vault templates, or Salesforce permissions.
-- Claiming or changing the external M8ven listing.
+- Adding, claiming, or changing an external M8ven listing.

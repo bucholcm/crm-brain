@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Make all seven CRM Brain skills installable and discoverable through skills.sh, and display the existing M8ven trust badge without presenting CRM Brain as an MCP server.
+**Goal:** Make all seven CRM Brain skills installable and discoverable through skills.sh.
 
 **Architecture:** Keep `plugins/crm-brain/skills/` as the only source of skill content because the official `skills` CLI discovers the existing plugin layout. Add root-level skills.sh presentation metadata, document Agent Skills installation alongside the existing Claude options, and pin the public distribution contract with a small standard-library test suite.
 
@@ -13,9 +13,9 @@
 ## Global Constraints
 
 - Canonical skill sources remain under `plugins/crm-brain/skills/`; do not create a second skill tree.
-- The M8ven badge is trust-listing metadata only; never describe CRM Brain as an MCP server or M8ven as an installation method.
+- Do not add an M8ven badge or listing link; CRM Brain is distributed as Agent Skills and a Claude plugin, not an MCP server.
 - Preserve the Cowork and Claude Code installation paths.
-- Do not change skill behavior, vault templates, Salesforce permissions, or the external M8ven listing.
+- Do not change skill behavior, vault templates, or Salesforce permissions.
 - Skill descriptions remain at most 1,024 characters and contain no angle-bracket placeholders.
 - Preserve unrelated working-tree changes, including the concurrent transcript-source wording edits already present in `README.md`, and never inspect or package Git-excluded private files.
 
@@ -24,8 +24,8 @@
 - Nested plugin layout: all seven `plugins/crm-brain/skills/*/SKILL.md` directories must appear in skills.sh metadata exactly once.
 - Metadata drift: a missing, duplicate, or unknown skill slug must fail the distribution contract test.
 - Invalid public metadata: `skills.sh.json` must be valid JSON with the published schema URL and non-empty groups.
-- Link drift: the README must retain the canonical skills.sh badge/link and the exact supplied M8ven badge/link.
-- Product classification: the Install section must not call CRM Brain an MCP server or offer M8ven as an installation route.
+- Link drift: the README must retain the canonical skills.sh badge/link and contain no M8ven link.
+- Product classification: the README must present CRM Brain as Agent Skills and a Claude plugin, not an MCP server.
 
 ---
 
@@ -179,8 +179,8 @@ git commit -m "feat: add skills.sh distribution metadata"
 - Create: `tests/test_readme_distribution.py`
 
 **Interfaces:**
-- Consumes: the canonical repository slug `bucholcm/crm-brain`, the existing Claude marketplace commands, and the supplied M8ven badge URL
-- Produces: public README badges and Agent Skills installation commands without changing the meaning of the M8ven listing
+- Consumes: the canonical repository slug `bucholcm/crm-brain` and the existing Claude marketplace commands
+- Produces: a public skills.sh README badge and Agent Skills installation commands
 
 - [ ] **Step 1: Write the failing README tests**
 
@@ -198,19 +198,13 @@ class ReadmeDistributionTests(unittest.TestCase):
     def setUp(self):
         self.readme = (ROOT / "README.md").read_text()
 
-    def test_readme_has_canonical_distribution_badges(self):
+    def test_readme_has_canonical_skills_badge_without_m8ven(self):
         self.assertIn(
             "[![skills.sh](https://skills.sh/b/bucholcm/crm-brain)]"
             "(https://skills.sh/bucholcm/crm-brain)",
             self.readme,
         )
-        self.assertIn(
-            "[![M8ven Score]"
-            "(https://m8ven.ai/badge/mcp/bucholcm-crm-brain-3o7mfi?"
-            "v=f97bc4802c14b7af8e465031bec21c09)]"
-            "(https://m8ven.ai/mcp/bucholcm-crm-brain-3o7mfi?s=readme)",
-            self.readme,
-        )
+        self.assertNotIn("m8ven.ai", self.readme.lower())
 
     def test_readme_documents_skills_cli(self):
         install = self.readme.split("## Install", 1)[1].split("## The vault", 1)[0]
@@ -237,13 +231,12 @@ python3 -m unittest tests.test_readme_distribution -v
 
 Expected: 2 failures because the badges and `npx skills` commands are absent.
 
-- [ ] **Step 3: Add the canonical badges below the README title**
+- [ ] **Step 3: Add the canonical skills.sh badge below the README title**
 
 Insert immediately below `# crm-brain`:
 
 ```markdown
 [![skills.sh](https://skills.sh/b/bucholcm/crm-brain)](https://skills.sh/bucholcm/crm-brain)
-[![M8ven Score](https://m8ven.ai/badge/mcp/bucholcm-crm-brain-3o7mfi?v=f97bc4802c14b7af8e465031bec21c09)](https://m8ven.ai/mcp/bucholcm-crm-brain-3o7mfi?s=readme)
 ```
 
 - [ ] **Step 4: Add Agent Skills as a first-class installation option**
@@ -268,7 +261,7 @@ npx skills add bucholcm/crm-brain --skill account-brief
 Connect Salesforce and, optionally, a transcript source in your agent, then say **"set up crm-brain"** in the folder where you want the vault.
 ````
 
-Retain the existing Cowork and Claude Code command blocks after the new Agent Skills option. Do not mention M8ven anywhere in the Install section.
+Retain the existing Cowork and Claude Code command blocks after the new Agent Skills option. Do not mention or link to M8ven anywhere in the README.
 
 - [ ] **Step 5: Run the README tests to verify they pass**
 
@@ -375,13 +368,3 @@ https://skills.sh/bucholcm/crm-brain
 ```
 
 Expected: the repository page displays the configured groups and links each of the seven skills. A delay is acceptable because skills.sh processes telemetry and caches repository pages.
-
-- [ ] **Step 4: Check the M8ven badge target**
-
-Open:
-
-```text
-https://m8ven.ai/mcp/bucholcm-crm-brain-3o7mfi?s=readme
-```
-
-Expected: the existing CRM Brain trust-listing page loads. Do not create, claim, or modify an M8ven listing as part of this task.
