@@ -1,10 +1,10 @@
 ---
 name: meeting-intake
 description: >
-  This skill should be used after a client meeting to turn a Fireflies transcript,
-  another recorder's transcript or plain meeting notes into vault knowledge,
+  This skill should be used after a client meeting to turn a transcript or plain
+  meeting notes into vault knowledge,
   Salesforce follow ups and personal action items. Triggers include "process this
-  meeting", "meeting intake", "ingest the transcript", "here is the Fireflies link",
+  meeting", "meeting intake", "ingest the transcript", "here is the transcript link",
   "what came out of the call with [client]", "file my last meeting", and "turn this
   call into next steps". Trigger whenever meeting output is supplied and the user
   expects it to land somewhere and produce follow ups.
@@ -29,7 +29,7 @@ Streams 1 to 3 wait for the user on purpose; only stream 4, the user's own priva
 
 1. Find the vault (folder with `CLAUDE.md`, `_config/`, `meetings/`). Read its `CLAUDE.md` and `_config/normalizations.md`.
 2. Get the transcript:
-   - If a Fireflies (or other recorder) connector is available, search by date, title or attendee and fetch the transcript and its summary.
+   - If a transcript connector is available, search by date, title or attendee and fetch the transcript and its summary.
    - Otherwise use what the user pasted or attached.
    - A bare link with no content and no connector: ask for the text or the file. Never invent what was said.
 3. Identify the account and, if any, the opportunity. Check `accounts/` and `opportunities/` with `Glob`. If Salesforce is connected, look up the Account and its open Opportunities by name.
@@ -88,7 +88,7 @@ Show each change exactly as it will be written. Write only the ones the user app
 
 ## Step 5: action items
 
-Extract **only tasks for the user**. Not tasks for the client, not tasks for the world. Write them to `todos/inbox.md` (or the `todos-folder` from settings) using the schema in the vault `CLAUDE.md`, with `source: fireflies` (or the recorder used) and the transcript link. Check that each `^id` is unique across all files in the todos folder.
+Extract **only tasks for the user**. Not tasks for the client, not tasks for the world. Write them to `todos/inbox.md` (or the `todos-folder` from settings) using the schema in the vault `CLAUDE.md`, with the actual transcript source name and link. Check that each `^id` is unique across all files in the todos folder.
 
 Commitments by colleagues become "make sure [name] does [thing]" only if the user owns the follow up.
 

@@ -6,7 +6,7 @@ description: >
   layout changes. Triggers include "set up crm-brain", "install crm-brain",
   "create my vault", "connect my Salesforce to a wiki", "learn my org",
   "re-run setup", "our Salesforce layout changed", and "how do I start".
-  It creates the vault folder, checks the Salesforce and Fireflies connectors,
+  It creates the vault folder, checks the Salesforce and transcript connectors,
   inspects the org to find which fields really hold the amount and the next step,
   writes that to the vault config, and finishes with one useful result.
 metadata:
@@ -31,7 +31,7 @@ Five steps. The user should get something useful out of step 5, not just an empt
 Check which tools exist in this session. Do not guess from names alone; look for actual capabilities.
 
 - **Salesforce**: a connector that can run SOQL (often a `query` path such as `/services/data/vXX.X/query`, sometimes behind a discover / describe / dispatch pattern). Run one harmless query to prove it works: `SELECT Id, Name FROM User WHERE IsActive = true LIMIT 1`.
-- **Fireflies** (or another meeting recorder): a connector that can list or search transcripts. Optional. Without it, `meeting-intake` works from pasted notes or exported files.
+- **Transcript source**: a connector that can list or search transcripts. Optional. Without it, `meeting-intake` works from pasted notes or exported files.
 
 If Salesforce is missing, say that crm-brain still works as a meeting and account memory, and that steps 3 and 5 need the connector. Offer to continue without it.
 

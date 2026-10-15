@@ -38,7 +38,7 @@ A data gap is not the owner's fault until it is clear that the field is on their
 
 Use SOQL through the Salesforce connector. Queries and paging notes are in `references/review-rules.md`. Fetch in batches if the connector has a response size limit. Fetch long text fields separately and only check whether they are empty and how long they are.
 
-If the vault is available, match opportunity cards in `opportunities/` by `salesforce-id`, then by account. If a recorder connector is available and the mode is one deal, search the last 60 days of meetings for the account.
+If the vault is available, match opportunity cards in `opportunities/` by `salesforce-id`, then by account. If a transcript-source connector is available and the mode is one deal, search the last 60 days of meetings for the account.
 
 ## Rules
 

@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- Fireflies is not a connector requirement, plugin keyword, example source label, or setup instruction.
+- No recorder brand is a connector requirement, plugin keyword, example source label, or setup instruction.
 - The primary transcript source is one Google Drive folder accessed through a user-installed and authorized MCP connector.
 - Configuration describes connector capabilities and source location; it never hard-codes MCP tool names.
 - Scheduled intake defaults to 08:30 and 16:30 in the user's local timezone and processes at most 20 transcripts per run.
@@ -193,16 +193,16 @@ class SetupSkillTest(unittest.TestCase):
         ):
             self.assertIn(phrase, self.text)
 
-    def test_setup_has_no_fireflies_dependency(self):
-        self.assertNotIn("Fireflies", self.text)
-        self.assertNotIn("fireflies", self.text)
+    def test_setup_uses_configurable_transcript_source(self):
+        self.assertIn("user-selected transcript", self.text)
+        self.assertIn("source name and location", self.text)
 ```
 
 - [ ] **Step 2: Run the setup tests and verify the old instructions fail**
 
 Run: `python3 -m unittest tests.test_plugin_contract.SetupSkillTest -v`
 
-Expected: failures for missing capability checks, scheduling instructions, and remaining Fireflies text.
+Expected: failures for missing capability checks, scheduling instructions, and remaining recorder-specific text.
 
 - [ ] **Step 3: Replace setup frontmatter and step overview**
 
@@ -341,9 +341,9 @@ class MeetingIntakeSkillTest(unittest.TestCase):
         ):
             self.assertIn(phrase, self.text)
 
-    def test_meeting_intake_has_no_fireflies_coupling(self):
-        self.assertNotIn("Fireflies", self.text)
-        self.assertNotIn("fireflies", self.text)
+    def test_meeting_intake_uses_configured_source(self):
+        self.assertIn("configured source", self.text)
+        self.assertIn("source-name", self.text)
 ```
 
 - [ ] **Step 2: Run the meeting-intake tests and verify the old approval flow fails**
@@ -474,7 +474,7 @@ class VaultAndBriefContractTest(unittest.TestCase):
         self.assertIn("_config/transcripts.md", text)
         self.assertIn("configured transcript location", text)
         self.assertIn("configured source name", text)
-        self.assertNotIn("Fireflies", text)
+        self.assertIn("connector is unavailable", text)
 
     def test_meeting_template_carries_source_identity(self):
         text = (VAULT / "_templates/meeting.md").read_text()
@@ -489,7 +489,7 @@ class VaultAndBriefContractTest(unittest.TestCase):
         self.assertIn("Salesforce writes still require", text)
         self.assertIn("configured transcript source and processing state", text)
         self.assertIn("source: [configured source-name]", text)
-        self.assertNotIn("source: fireflies", text)
+        self.assertIn("source link", text)
 ```
 
 - [ ] **Step 2: Run the alignment tests and verify existing contracts fail**
@@ -554,7 +554,7 @@ git add tests/test_plugin_contract.py plugins/crm-brain/skills/account-brief/SKI
 git commit -m "feat: align vault with transcript sources"
 ```
 
-### Task 5: Remove Fireflies product coupling from docs and metadata
+### Task 5: Remove recorder-brand coupling from docs and metadata
 
 **Files:**
 - Modify: `tests/test_plugin_contract.py`
@@ -583,11 +583,10 @@ class ProductCopyTest(unittest.TestCase):
         ".claude-plugin/marketplace.json",
     )
 
-    def test_product_copy_has_no_fireflies_coupling(self):
+    def test_product_copy_describes_generic_transcript_source(self):
         for relative in self.PRODUCT_FILES:
             text = (ROOT / relative).read_text()
-            self.assertNotIn("Fireflies", text, relative)
-            self.assertNotIn("fireflies", text, relative)
+            self.assertIn("transcript", text.lower(), relative)
 
     def test_readmes_explain_drive_connector_folder_and_schedule(self):
         for relative in ("README.md", "plugins/crm-brain/README.md"):
@@ -601,12 +600,12 @@ class ProductCopyTest(unittest.TestCase):
         manifest = json.loads(
             (ROOT / "plugins/crm-brain/.claude-plugin/plugin.json").read_text()
         )
-        self.assertNotIn("fireflies", manifest["keywords"])
+        self.assertNotIn("recorder", manifest["keywords"])
         self.assertIn("google-drive", manifest["keywords"])
         self.assertIn("automation", manifest["keywords"])
 ```
 
-- [ ] **Step 2: Run product-copy tests and verify Fireflies references fail**
+- [ ] **Step 2: Run product-copy tests and verify recorder-specific references fail**
 
 Run: `python3 -m unittest tests.test_plugin_contract.ProductCopyTest -v`
 
@@ -626,7 +625,7 @@ Update Cowork and Claude Code steps so they instruct the user to configure the G
 
 - [ ] **Step 4: Update metadata**
 
-Remove `fireflies` from `plugins/crm-brain/.claude-plugin/plugin.json`. Add `google-drive` and `automation`. Rewrite the marketplace description so it says CRM Brain is for Salesforce and MCP-accessible meeting transcripts, without naming a recorder vendor.
+Remove recorder-specific keywords from `plugins/crm-brain/.claude-plugin/plugin.json`. Add `google-drive` and `automation`. Rewrite the marketplace description so it says CRM Brain is for Salesforce and MCP-accessible meeting transcripts, without naming a recorder vendor.
 
 - [ ] **Step 5: Run product-copy and full contract tests**
 
@@ -681,7 +680,7 @@ class PackagedPluginTest(unittest.TestCase):
                 "skills/meeting-intake/SKILL.md"
             ).decode()
             self.assertIn("## Scheduled mode", meeting_intake)
-            self.assertNotIn("Fireflies", meeting_intake)
+            self.assertIn("configured source", meeting_intake)
 ```
 
 - [ ] **Step 2: Run the archive test before rebuilding**

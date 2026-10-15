@@ -15,7 +15,7 @@ metadata:
 
 # account-brief
 
-A brief someone reads five minutes before a meeting. Its value is the part no single system holds: the CRM has fields, the recorder has transcripts, the vault has context. The brief puts them side by side and says where they disagree.
+A brief someone reads five minutes before a meeting. Its value is the part no single system holds: the CRM has fields, the transcript source has transcripts, the vault has context. The brief puts them side by side and says where they disagree.
 
 Read only. Salesforce writes and vault edits are offered at the end, never done silently.
 
@@ -35,7 +35,7 @@ Read only. Salesforce writes and vault edits are offered at the end, never done 
 - Contacts: name, title, email domain, owner and `Owner.IsActive`, last activity, created date.
 - Activities in the last 90 days on the account and its opportunities: subject, type, date, who.
 
-**Recorder** (if connected): meetings in the last 90 days whose title, attendees or content mention the account. Read summaries first, transcripts only where a summary is thin.
+**Transcript source** (if connected): meetings in the last 90 days whose title, attendees or content mention the account. Read summaries first, transcripts only where a summary is thin.
 
 **Vault**: the account page, linked opportunity cards, contact pages, meeting stubs, previous briefs.
 
@@ -48,7 +48,7 @@ Look for these. They are the reason the brief exists.
 - **People who matter but are not in the CRM.** Spoke in recent meetings, no Contact record.
 - **Promises not logged.** Commitments in transcripts ("we send the proposal Friday") with no matching open Task or Event.
 - **Stale CRM state.** Stage unchanged for longer than `stuck-stage-days` while transcripts show movement, or the reverse: an advancing stage with no conversation behind it.
-- **Last real contact.** The latest meeting in the recorder or vault versus `LastActivityDate`. Say which is newer.
+- **Last real contact.** The latest meeting in the transcript source or vault versus `LastActivityDate`. Say which is newer.
 - **Loss history.** Lost deals and their reasons. If the vault says one thing and the CRM reason says another, show both.
 
 ## Step 3: write the brief
@@ -81,7 +81,7 @@ One thing not to promise, if the history suggests one.
 
 Keep it to what fits five minutes of reading. Cut anything that does not change what the user says or asks in the meeting.
 
-Cite every line: `(source: Salesforce, Opportunity [name], 2026-10-01)`, `(source: meetings/2026-09-12-acme-qbr.md)`, `(source: Fireflies, 2026-09-28)`. Nothing without a source; mark guesses `[unconfirmed]`.
+Cite every line: `(source: Salesforce, Opportunity [name], 2026-10-01)`, `(source: meetings/2026-09-12-acme-qbr.md)`, `(source: [transcript source], 2026-09-28)`. Nothing without a source; mark guesses `[unconfirmed]`.
 
 ## Step 4: offer, do not do
 

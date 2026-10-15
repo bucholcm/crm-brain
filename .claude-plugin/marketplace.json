@@ -1,6 +1,6 @@
 {
   "name": "crm-brain",
-  "description": "CRM Brain: a deal memory for Salesforce, Fireflies and Claude users.",
+  "description": "CRM Brain: a deal memory for Salesforce and meeting transcripts.",
   "owner": {
     "name": "Maciej Bucholc"
   },
