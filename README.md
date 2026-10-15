@@ -1,8 +1,11 @@
 # crm-brain
 
+[![skills.sh](https://skills.sh/b/bucholcm/crm-brain)](https://skills.sh/bucholcm/crm-brain)
+[![M8ven Score](https://m8ven.ai/badge/mcp/bucholcm-crm-brain-3o7mfi?v=f97bc4802c14b7af8e465031bec21c09)](https://m8ven.ai/mcp/bucholcm-crm-brain-3o7mfi?s=readme)
+
 **A deal memory next to your CRM.** Salesforce keeps the fields. CRM Brain keeps what was actually said.
 
-A Claude plugin for people who sell with Salesforce and keep meeting transcripts in an accessible source. It keeps a plain markdown vault next to your CRM, fills it from meetings, and uses it to tell you what the CRM cannot: who really decides, what was promised on a call and never logged, which "empty" contact record is in fact the CFO.
+CRM Brain is a set of Agent Skills and a Claude plugin for people who sell with Salesforce and keep meeting transcripts in an accessible source. It keeps a plain markdown vault next to your CRM, fills it from meetings, and uses it to tell you what the CRM cannot: who really decides, what was promised on a call and never logged, which "empty" contact record is in fact the CFO.
 
 Built on Andrej Karpathy's [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) idea. Generalised from a private setup I have run every working day since May 2026.
 
@@ -35,7 +38,23 @@ All of these came up in my own data in the first weeks after connecting Salesfor
 
 ## Install
 
-You need Claude with a folder connected (the Claude desktop app in Cowork mode, or Claude Code), a Salesforce connector, and optionally a connector that can search and read meeting transcripts.
+CRM Brain needs access to a working folder and a Salesforce connector. A connector that can search and read meeting transcripts is optional.
+
+**Agent Skills (Codex, Claude Code, Cursor and other supported agents)**
+
+Install all seven CRM Brain skills:
+
+```sh
+npx skills add bucholcm/crm-brain
+```
+
+Or install one workflow:
+
+```sh
+npx skills add bucholcm/crm-brain --skill account-brief
+```
+
+Connect Salesforce and, optionally, a transcript source in your agent, then say **"set up crm-brain"** in the folder where you want the vault.
 
 **Cowork (Claude desktop app)**
 
