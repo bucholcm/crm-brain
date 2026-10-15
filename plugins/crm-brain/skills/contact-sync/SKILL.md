@@ -43,7 +43,7 @@ Watch for: two records with one email (duplicates), several people with the surn
 Take from Salesforce: title, account, email, record owner, last activity, Salesforce Id.
 
 - **Title**: the CRM title usually wins over a guess from a transcript. If the person clearly does something else in meetings, write both: "CRM title: X. In practice: Y (source)".
-- **Last contact**: the CRM is often wrong here. Activity fields are empty, lag behind, or contain impossible dates. Use the latest dated meeting or email in the vault or recorder for `last-contact`, and note the CRM date only if it differs.
+- **Last contact**: the CRM is often wrong here. Activity fields are empty, lag behind, or contain impossible dates. Use the latest dated meeting or email in the vault or transcript source for `last-contact`, and note the CRM date only if it differs.
 - **Duplicates**: when two records exist with different titles, the newer one usually carries the current title. Note which record should survive a merge and which values must be kept: a merge keeps the master record's values, not the best ones.
 
 ## Vault to Salesforce

@@ -3,7 +3,7 @@ date: YYYY-MM-DD
 account: [account-slug]
 opportunity: [opportunity-slug or empty]
 owner: [slug of the person who ran it]
-transcript: [URL to Fireflies or wherever the recording lives]
+transcript: [URL to the transcript or recording]
 last-updated: YYYY-MM-DD
 ---
 

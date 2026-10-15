@@ -18,7 +18,7 @@ The schema lives in the vault (`CLAUDE.md`, `_templates/`, `_config/`), not in t
 
 - Claude with a folder connected (Cowork or Claude Code).
 - A Salesforce connector that can run SOQL. Recommended, not required.
-- A Fireflies connector. Optional; pasted notes work too.
+- A connector that can search and read meeting transcripts. Optional; pasted notes work too.
 
 ## Safety
 

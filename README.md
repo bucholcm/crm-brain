@@ -2,7 +2,7 @@
 
 **A deal memory next to your CRM.** Salesforce keeps the fields. CRM Brain keeps what was actually said.
 
-A Claude plugin for people who sell with Salesforce and record calls with Fireflies. It keeps a plain markdown vault next to your CRM, fills it from meetings, and uses it to tell you what the CRM cannot: who really decides, what was promised on a call and never logged, which "empty" contact record is in fact the CFO.
+A Claude plugin for people who sell with Salesforce and keep meeting transcripts in an accessible source. It keeps a plain markdown vault next to your CRM, fills it from meetings, and uses it to tell you what the CRM cannot: who really decides, what was promised on a call and never logged, which "empty" contact record is in fact the CFO.
 
 Built on Andrej Karpathy's [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) idea. Generalised from a private setup I have run every working day since May 2026.
 
@@ -35,13 +35,13 @@ All of these came up in my own data in the first weeks after connecting Salesfor
 
 ## Install
 
-You need Claude with a folder connected (the Claude desktop app in Cowork mode, or Claude Code), a Salesforce connector, and optionally a Fireflies connector.
+You need Claude with a folder connected (the Claude desktop app in Cowork mode, or Claude Code), a Salesforce connector, and optionally a connector that can search and read meeting transcripts.
 
 **Cowork (Claude desktop app)**
 
 1. Download `crm-brain.plugin` from the [latest release](https://github.com/bucholcm/crm-brain/releases/latest).
 2. Drop it into a Cowork chat and press Install.
-3. Connect Salesforce and Fireflies from the connector directory.
+3. Connect Salesforce and your transcript source from the connector directory.
 4. Connect a folder where the vault should live.
 5. Say **"set up crm-brain"**.
 
@@ -52,7 +52,7 @@ You need Claude with a folder connected (the Claude desktop app in Cowork mode, 
 /plugin install crm-brain@crm-brain
 ```
 
-Then connect your Salesforce and Fireflies MCP servers and say "set up crm-brain" inside the folder you want to use.
+Then connect your Salesforce and transcript-source MCP servers and say "set up crm-brain" inside the folder you want to use.
 
 Setup ends with one real result, usually a brief for your next client meeting, not an empty folder.
 

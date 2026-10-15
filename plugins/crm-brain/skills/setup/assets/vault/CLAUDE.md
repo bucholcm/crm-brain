@@ -85,7 +85,7 @@ Skills drop action items for you into `todos/inbox.md` in this format:
 
 ```markdown
 - [ ] Verb first, what to do ^id-YYYYMMDD-abc
-  - source: fireflies | salesforce | email | manual
+  - source: [configured transcript source] | salesforce | email | manual
   - priority: P1 | P2 | P3
   - due: YYYY-MM-DD
   - added: YYYY-MM-DD

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-CRM Brain will no longer depend on a Fireflies MCP connector. During setup, the user will choose an installed transcript-capable MCP connector and point CRM Brain to the specific source that contains meeting transcripts. The initial documented path is a Google Drive folder accessed through a Google Drive MCP connector.
+CRM Brain will not depend on a specific recorder vendor. During setup, the user will choose an installed transcript-capable MCP connector and point CRM Brain to the specific source that contains meeting transcripts. The initial documented path is a Google Drive folder accessed through a Google Drive MCP connector.
 
 CRM Brain will also offer a scheduled intake that runs twice per day. Scheduled intake will automatically update the local vault from new transcripts while keeping every Salesforce change as a proposal that requires explicit user approval.
 
@@ -18,7 +18,7 @@ CRM Brain will also offer a scheduled intake that runs twice per day. Scheduled 
 
 ## Non-goals
 
-- Configuring Fireflies to export transcripts into Google Drive.
+- Configuring a recorder to export transcripts into Google Drive.
 - Installing or authorizing an MCP connector on the user's behalf.
 - Copying raw transcripts into the CRM Brain vault.
 - Synchronizing or editing source transcripts.
@@ -130,9 +130,9 @@ If the installed Claude experience cannot express two daily run times in one sch
 
 ## Documentation and packaging changes
 
-User-facing documentation, plugin metadata, examples, setup instructions, and source labels will be changed from Fireflies-specific language to Google Drive or configurable transcript-source language. Fireflies will not be a requirement or plugin keyword.
+User-facing documentation, plugin metadata, examples, setup instructions, and source labels will use Google Drive or configurable transcript-source language. No recorder brand will be a requirement or plugin keyword.
 
-The meeting template will use a generic transcript source URL. Todo source values will use the configured source name, such as `google-drive` or `granola`, rather than `fireflies`.
+The meeting template will use a generic transcript source URL. Todo source values will use the configured source name, such as `google-drive` or `granola`, rather than a fixed recorder label.
 
 The packaged `dist/crm-brain.plugin` artifact will be rebuilt after the source files pass validation.
 
@@ -151,7 +151,7 @@ The packaged `dist/crm-brain.plugin` artifact will be rebuilt after the source f
 Implementation verification will include:
 
 - Plugin manifest and skill validation through `scripts/build.sh`.
-- Repository-wide checks that user-facing Fireflies dependencies, setup steps, keywords, examples, and fixed source labels have been removed.
+- Repository-wide checks that recorder-specific dependencies, setup steps, keywords, examples, and fixed source labels have been removed.
 - Scenario tests or documented fixtures covering first-time Google Drive setup, an unavailable connector, duplicate discovery, retry after a partial failure, an unknown account, and generation of Salesforce proposals without Salesforce writes.
 - Inspection of the rebuilt plugin archive to confirm it contains the updated skills, templates, configuration assets, and license.
 
