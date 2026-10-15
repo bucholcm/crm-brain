@@ -25,7 +25,7 @@ Add two badges near the top of the root README:
 
 The M8ven badge is trust-listing metadata only. Documentation must not describe CRM Brain as an MCP server or present the M8ven page as an installation method.
 
-Update the installation section so Agent Skills installation is a first-class option alongside Cowork and Claude Code. State the shared runtime requirements once: users still need a Salesforce connector and may optionally connect Fireflies or another transcript source.
+Update the installation section so Agent Skills installation is a first-class option alongside Cowork and Claude Code. State the shared runtime requirements once: users still need a Salesforce connector and may optionally connect a transcript source.
 
 ## skills.sh metadata
 
