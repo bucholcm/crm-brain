@@ -1,7 +1,6 @@
 .DS_Store
 *.plugin
 dist/
-.worktrees/
 # Never commit a real vault into this repo
 crm-brain-vault/
 JOURNEY.md

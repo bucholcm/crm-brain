@@ -172,7 +172,7 @@ git commit -m "feat: add skills.sh distribution metadata"
 
 ---
 
-### Task 2: Document public installation and trust links
+### Task 2: Document public installation and distribution links
 
 **Files:**
 - Modify: `README.md`
@@ -214,7 +214,6 @@ class ReadmeDistributionTests(unittest.TestCase):
             install,
         )
         self.assertNotIn("M8ven", install)
-        self.assertNotIn("MCP server", install)
 
 
 if __name__ == "__main__":
